@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<title>ТО машины</title>
+</head>
+
+
+<body>
+
+
+<h1>
+    Техническое обслуживание машины {{ maintenance.machine.factory_number }}
+</h1>
+
+
+<p>
+    <b>Заводской номер машины:</b>
+    {{ maintenance.machine.factory_number }}
+</p>
+
+
+<p>
+    <b>Тип ТО:</b>
+    {{ maintenance.maintenance_type }}
+</p>
+
+
+<p>
+    <b>Дата проведения:</b>
+    {{ maintenance.maintenance_date }}
+</p>
+
+
+<p>
+    <b>Описание работ:</b>
+    {{ maintenance.description }}
+</p>
+
+
+<p>
+    <b>Ответственный:</b>
+    {{ maintenance.employee }}
+</p>
+
+
+<p>
+    <b>Сервисная компания:</b>
+    {{ maintenance.machine.service_company }}
+</p>
+
+
+<a href="{% url 'maintenance:maintenance_list' %}">
+    Назад к списку ТО
+</a>
+
+
+</body>
+
+</html>

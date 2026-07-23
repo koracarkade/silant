@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Техническое обслуживание</title>
+</head>
+
+<body>
+
+<h1>Техническое обслуживание</h1>
+
+
+<form method="get">
+
+    {{ filter.form.as_p }}
+
+    <button type="submit">
+        Найти
+    </button>
+
+    <a href="{% url 'maintenance:maintenance_list' %}">
+        Сбросить фильтр
+    </a>
+
+</form>
+
+
+<br>
+
+
+<table border="1" cellpadding="6">
+
+<tr>
+    <th>Машина</th>
+    <th>Тип ТО</th>
+    <th>Дата проведения ТО</th>
+    <th>Описание</th>
+</tr>
+
+
+{% for maintenance in maintenances %}
+
+<tr>
+
+<td>
+<a href="{% url 'maintenance:maintenance_detail' maintenance.pk %}">
+    {{ maintenance.machine.factory_number }}
+</a>
+</td>
+
+
+<td>
+    {{ maintenance.maintenance_type }}
+</td>
+
+
+<td>
+    {{ maintenance.maintenance_date }}
+</td>
+
+
+<td>
+    {{ maintenance.description }}
+</td>
+
+
+</tr>
+
+
+{% empty %}
+
+<tr>
+<td colspan="4">
+    ТО не найдено
+</td>
+</tr>
+
+{% endfor %}
+
+
+</table>
+
+
+</body>
+
+</html>

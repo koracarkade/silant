@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Машины</title>
+</head>
+
+<body>
+
+<h1>Машины</h1>
+
+
+<form method="get">
+
+    {{ filter.form.as_p }}
+
+    <button type="submit">
+        Найти
+    </button>
+
+</form>
+
+
+<br>
+
+
+<table border="1" cellpadding="6">
+
+    <tr>
+        <th>Заводской номер</th>
+        <th>Модель</th>
+        <th>Двигатель</th>
+        <th>Дата отгрузки</th>
+    </tr>
+
+
+    {% for machine in machines %}
+
+    <tr>
+
+        <td>
+            <a href="{% url 'machines:machine_detail' machine.pk %}">
+                {{ machine.factory_number }}
+            </a>
+        </td>
+
+
+        <td>
+            {{ machine.machine_model }}
+        </td>
+
+
+        <td>
+            {{ machine.engine_model }}
+        </td>
+
+
+        <td>
+            {{ machine.shipment_date }}
+        </td>
+
+    </tr>
+
+    {% empty %}
+
+    <tr>
+        <td colspan="4">
+            Машины не найдены
+        </td>
+    </tr>
+
+    {% endfor %}
+
+
+</table>
+
+
+</body>
+
+</html>

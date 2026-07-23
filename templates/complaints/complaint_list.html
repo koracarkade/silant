@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Рекламации</title>
+</head>
+
+<body>
+
+
+<h1>Рекламации</h1>
+
+
+<form method="get">
+
+    {{ filter.form.as_p }}
+
+    <button type="submit">
+        Найти
+    </button>
+
+    <a href="{% url 'complaints:complaint_list' %}">
+        Сбросить фильтр
+    </a>
+
+</form>
+
+
+<br>
+
+
+<table border="1" cellpadding="6">
+
+<tr>
+    <th>Машина</th>
+    <th>Дата рекламации</th>
+    <th>Описание</th>
+    <th>Статус</th>
+</tr>
+
+
+{% for complaint in complaints %}
+
+<tr>
+
+<td>
+<a href="{% url 'complaints:complaint_detail' complaint.pk %}">
+    {{ complaint.machine.factory_number }}
+</a>
+</td>
+
+
+<td>
+    {{ complaint.complaint_date }}
+</td>
+
+
+<td>
+    {{ complaint.description }}
+</td>
+
+
+<td>
+    {{ complaint.get_status_display }}
+</td>
+
+
+</tr>
+
+
+{% empty %}
+
+<tr>
+<td colspan="4">
+    Рекламации не найдены
+</td>
+</tr>
+
+{% endfor %}
+
+
+</table>
+
+
+</body>
+
+</html>

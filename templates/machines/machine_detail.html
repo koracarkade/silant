@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Машина</title>
+</head>
+<body>
+
+<h1>{{ machine.factory_number }}</h1>
+
+<p><b>Модель:</b> {{ machine.machine_model }}</p>
+
+<p><b>Двигатель:</b> {{ machine.engine_model }}</p>
+
+<p><b>Заводской номер двигателя:</b> {{ machine.engine_number }}</p>
+
+<p><b>Трансмиссия:</b> {{ machine.transmission_model }}</p>
+
+<p><b>Ведущий мост:</b> {{ machine.drive_axle_model }}</p>
+
+<p><b>Управляемый мост:</b> {{ machine.steering_axle_model }}</p>
+
+<p><b>Комплектация:</b> {{ machine.equipment }}</p>
+
+<p><b>Адрес поставки:</b> {{ machine.delivery_address }}</p>
+
+<p><b>Грузополучатель:</b> {{ machine.consignee }}</p>
+
+<p><b>Дата отгрузки:</b> {{ machine.shipment_date }}</p>
+
+<a href="{% url 'machines:machine_list' %}">
+    Назад
+</a>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+[
+  {
+    "model": "references.reference",
+    "pk": 1,
+    "fields": {
+      "entity_name": "machine_model",
+      "name": "ПД1,5",
+      "description": "Модель техники"
+    }
+  },
+  {
+    "model": "references.reference",
+    "pk": 2,
+    "fields": {
+      "entity_name": "engine_model",
+      "name": "Kubota D1803",
+      "description": "Модель двигателя"
+    }
+  },
+  {
+    "model": "references.reference",
+    "pk": 3,
+    "fields": {
+      "entity_name": "transmission_model",
+      "name": "10VA-00105",
+      "description": "Модель трансмиссии"
+    }
+  },
+  {
+    "model": "references.reference",
+    "pk": 4,
+    "fields": {
+      "entity_name": "drive_axle_model",
+      "name": "20VA-00101",
+      "description": "Ведущий мост"
+    }
+  },
+  {
+    "model": "references.reference",
+    "pk": 5,
+    "fields": {
+      "entity_name": "steering_axle_model",
+      "name": "VS20-00001",
+      "description": "Управляемый мост"
+    }
+  },
+  {
+    "model": "references.reference",
+    "pk": 6,
+    "fields": {
+      "entity_name": "maintenance_type",
+      "name": "ТО-1",
+      "description": "Плановое техническое обслуживание"
+    }
+  },
+  {
+    "model": "references.reference",
+    "pk": 7,
+    "fields": {
+      "entity_name": "service_company",
+      "name": "ООО Силант",
+      "description": "Сервисная компания"
+    }
+  },
+  {
+    "model": "references.reference",
+    "pk": 8,
+    "fields": {
+      "entity_name": "failure_node",
+      "name": "Двигатель",
+      "description": "Узел отказа"
+    }
+  },
+  {
+    "model": "references.reference",
+    "pk": 9,
+    "fields": {
+      "entity_name": "recovery_method",
+      "name": "Замена детали",
+      "description": "Способ восстановления"
+    }
+  },
+  {
+    "model": "references.reference",
+    "pk": 10,
+    "fields": {
+      "entity_name": "maintenance_company",
+      "name": "ООО Силант",
+      "description": "Организация, проводившая ТО"
+    }
+  }
+]

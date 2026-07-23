@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Рекламация</title>
+</head>
+
+
+<body>
+
+
+<h1>
+    Рекламация машины {{ complaint.machine.factory_number }}
+</h1>
+
+
+<p>
+    <b>Заводской номер машины:</b>
+    {{ complaint.machine.factory_number }}
+</p>
+
+
+<p>
+    <b>Сервисная компания:</b>
+    {{ complaint.machine.service_company }}
+</p>
+
+
+<p>
+    <b>Дата рекламации:</b>
+    {{ complaint.complaint_date }}
+</p>
+
+
+<p>
+    <b>Описание проблемы:</b>
+    {{ complaint.description }}
+</p>
+
+
+<p>
+    <b>Статус:</b>
+    {{ complaint.get_status_display }}
+</p>
+
+
+<a href="{% url 'complaints:complaint_list' %}">
+    Назад к списку рекламаций
+</a>
+
+
+</body>
+
+</html>
