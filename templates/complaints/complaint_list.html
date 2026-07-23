@@ -1,98 +1,188 @@
 {% extends "base.html" %}
 
+
 {% block title %}
 Рекламации
 {% endblock %}
 
 
+
 {% block content %}
+
+
 
 <h2>
     Рекламации
 </h2>
 
 
+
+
 <div class="filter-box">
 
-    <form method="get">
 
-        {{ filter.form.as_p }}
+<form method="get">
 
-        <button type="submit">
-            Найти
-        </button>
 
-    </form>
+    {{ filter.form.as_p }}
+
+
+    <button type="submit">
+        Найти
+    </button>
+
+
+</form>
+
 
 </div>
+
+
 
 
 
 <div class="table-wrapper">
 
+
 <table>
 
-    <tr>
 
-        <th>
+
+<tr>
+
+
+    <th>
+        <a href="?ordering={% if ordering == 'machine__factory_number' %}-machine__factory_number{% else %}machine__factory_number{% endif %}">
             Машина
-        </th>
+        </a>
+    </th>
 
-        <th>
+
+
+
+    <th>
+        <a href="?ordering={% if ordering == 'complaint_date' %}-complaint_date{% else %}complaint_date{% endif %}">
             Дата
-        </th>
+        </a>
+    </th>
 
-        <th>
+
+
+
+    <th>
+        <a href="?ordering={% if ordering == 'status' %}-status{% else %}status{% endif %}">
             Статус
-        </th>
-
-        <th>
-            Описание
-        </th>
-
-    </tr>
+        </a>
+    </th>
 
 
-    {% for complaint in complaints %}
 
-    <tr>
 
-        <td>
+    <th>
+        Описание
+    </th>
 
-            <a href="{% url 'complaints:complaint_detail' complaint.pk %}">
-                🔍 {{ complaint.machine.factory_number }}
-            </a>
 
-        </td>
 
-        <td>
-            {{ complaint.complaint_date }}
-        </td>
+</tr>
 
-        <td>
-            {{ complaint.get_status_display }}
-        </td>
 
-        <td>
-            {{ complaint.description|truncatechars:50 }}
-        </td>
 
-    </tr>
 
-    {% empty %}
 
-    <tr>
 
-        <td colspan="4">
-            Рекламаций нет.
-        </td>
+{% for complaint in complaints %}
 
-    </tr>
 
-    {% endfor %}
+
+<tr>
+
+
+
+
+<td>
+
+
+<a href="{% url 'complaints:complaint_detail' complaint.pk %}">
+
+    🔍 {{ complaint.machine.factory_number }}
+
+</a>
+
+
+</td>
+
+
+
+
+
+<td>
+
+    {{ complaint.complaint_date }}
+
+</td>
+
+
+
+
+
+<td>
+
+    {{ complaint.get_status_display }}
+
+</td>
+
+
+
+
+
+<td>
+
+    {{ complaint.description|truncatechars:50 }}
+
+</td>
+
+
+
+
+
+</tr>
+
+
+
+
+
+
+{% empty %}
+
+
+
+<tr>
+
+
+<td colspan="4">
+
+    Рекламаций нет.
+
+</td>
+
+
+</tr>
+
+
+
+{% endfor %}
+
+
+
+
 
 </table>
 
+
 </div>
+
+
+
 
 {% endblock %}

@@ -21,17 +21,30 @@ def machine_list(request):
     else:
         machines = Machine.objects.none()
 
+
     machine_filter = MachineFilter(
         request.GET,
         queryset=machines
     )
+
+
+    machines = machine_filter.qs
+
+
+    # Сортировка
+    ordering = request.GET.get("ordering")
+
+    if ordering:
+        machines = machines.order_by(ordering)
+
 
     return render(
         request,
         "machines/machine_list.html",
         {
             "filter": machine_filter,
-            "machines": machine_filter.qs,
+            "machines": machines,
+            "ordering": ordering,
         },
     )
 
@@ -43,11 +56,12 @@ def machine_detail(request, pk):
         pk=pk
     )
 
+
     if (
-            request.user.is_superuser
-            or request.user.groups.filter(name="Manager").exists()
-            or machine.client == request.user
-            or machine.service_company == request.user
+        request.user.is_superuser
+        or request.user.groups.filter(name="Manager").exists()
+        or machine.client == request.user
+        or machine.service_company == request.user
     ):
         return render(
             request,
@@ -56,6 +70,7 @@ def machine_detail(request, pk):
                 "machine": machine,
             },
         )
+
 
     return render(
         request,

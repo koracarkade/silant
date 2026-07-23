@@ -1,98 +1,148 @@
 {% extends "base.html" %}
 
+
 {% block title %}
 Техническое обслуживание
 {% endblock %}
 
 
+
 {% block content %}
+
 
 <h2>
     Техническое обслуживание
 </h2>
 
 
+
 <div class="filter-box">
 
-    <form method="get">
+<form method="get">
 
-        {{ filter.form.as_p }}
+    {{ filter.form.as_p }}
 
-        <button type="submit">
-            Найти
-        </button>
+    <button type="submit">
+        Найти
+    </button>
 
-    </form>
+</form>
 
 </div>
+
 
 
 
 <div class="table-wrapper">
 
+
 <table>
 
-    <tr>
 
-        <th>
+<tr>
+
+
+    <th>
+        <a href="?ordering={% if ordering == 'machine__factory_number' %}-machine__factory_number{% else %}machine__factory_number{% endif %}">
             Машина
-        </th>
+        </a>
+    </th>
 
-        <th>
+
+
+    <th>
+        <a href="?ordering={% if ordering == 'maintenance_type__name' %}-maintenance_type__name{% else %}maintenance_type__name{% endif %}">
             Вид ТО
-        </th>
+        </a>
+    </th>
 
-        <th>
+
+
+    <th>
+        <a href="?ordering={% if ordering == 'maintenance_date' %}-maintenance_date{% else %}maintenance_date{% endif %}">
             Дата
-        </th>
-
-        <th>
-            Описание
-        </th>
-
-    </tr>
+        </a>
+    </th>
 
 
-    {% for maintenance in maintenances %}
 
-    <tr>
+    <th>
+        Описание
+    </th>
 
-        <td>
 
-            <a href="{% url 'maintenance:maintenance_detail' maintenance.pk %}">
-                🔍 {{ maintenance.machine.factory_number }}
-            </a>
 
-        </td>
+</tr>
 
-        <td>
-            {{ maintenance.maintenance_type }}
-        </td>
 
-        <td>
-            {{ maintenance.maintenance_date }}
-        </td>
 
-        <td>
-            {{ maintenance.description|truncatechars:50 }}
-        </td>
 
-    </tr>
+{% for maintenance in maintenances %}
 
-    {% empty %}
 
-    <tr>
 
-        <td colspan="4">
-            Записей нет.
-        </td>
+<tr>
 
-    </tr>
 
-    {% endfor %}
+
+<td>
+
+<a href="{% url 'maintenance:maintenance_detail' maintenance.pk %}">
+    🔍 {{ maintenance.machine.factory_number }}
+</a>
+
+</td>
+
+
+
+
+<td>
+    {{ maintenance.maintenance_type }}
+</td>
+
+
+
+
+<td>
+    {{ maintenance.maintenance_date }}
+</td>
+
+
+
+
+<td>
+    {{ maintenance.description|truncatechars:50 }}
+</td>
+
+
+
+</tr>
+
+
+
+{% empty %}
+
+
+
+<tr>
+
+<td colspan="4">
+    Записей нет.
+</td>
+
+</tr>
+
+
+
+{% endfor %}
+
+
+
 
 </table>
 
+
 </div>
+
 
 {% endblock %}

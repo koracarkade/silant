@@ -213,3 +213,13 @@ footer {
         font-size: 14px;
     }
 }
+
+
+th a {
+    color: white;
+}
+
+
+th a:hover {
+    color: #EBE6D6;
+}

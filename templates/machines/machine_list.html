@@ -38,21 +38,35 @@
 
 
 <tr>
-    <th>
-        Заводской номер
-    </th>
 
     <th>
-        Модель
+        <a href="?ordering={% if ordering == 'factory_number' %}-factory_number{% else %}factory_number{% endif %}">
+            Заводской номер
+        </a>
     </th>
 
-    <th>
-        Двигатель
-    </th>
 
     <th>
-        Дата отгрузки
+        <a href="?ordering={% if ordering == 'machine_model__name' %}-machine_model__name{% else %}machine_model__name{% endif %}">
+            Модель
+        </a>
     </th>
+
+
+    <th>
+        <a href="?ordering={% if ordering == 'engine_model__name' %}-engine_model__name{% else %}engine_model__name{% endif %}">
+            Двигатель
+        </a>
+    </th>
+
+
+    <th>
+        <a href="?ordering={% if ordering == 'shipment_date' %}-shipment_date{% else %}shipment_date{% endif %}">
+            Дата отгрузки
+        </a>
+    </th>
+
+
 </tr>
 
 
@@ -66,7 +80,7 @@
 <td>
 
 <a href="{% url 'machines:machine_detail' machine.pk %}">
-{{ machine.factory_number }}
+    {{ machine.factory_number }}
 </a>
 
 </td>
@@ -74,19 +88,19 @@
 
 
 <td>
-{{ machine.machine_model }}
+    {{ machine.machine_model }}
 </td>
 
 
 
 <td>
-{{ machine.engine_model }}
+    {{ machine.engine_model }}
 </td>
 
 
 
 <td>
-{{ machine.shipment_date }}
+    {{ machine.shipment_date }}
 </td>
 
 

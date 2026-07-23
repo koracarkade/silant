@@ -32,14 +32,26 @@ def maintenance_list(request):
     )
 
 
+    maintenances = maintenance_filter.qs
+
+
+    # Сортировка
+    ordering = request.GET.get("ordering")
+
+    if ordering:
+        maintenances = maintenances.order_by(ordering)
+
+
     return render(
         request,
         "maintenance/maintenance_list.html",
         {
             "filter": maintenance_filter,
-            "maintenances": maintenance_filter.qs,
+            "maintenances": maintenances,
+            "ordering": ordering,
         },
     )
+
 
 
 @login_required
