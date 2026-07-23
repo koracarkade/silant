@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 body {
     font-family: Arial, sans-serif;
     background: #EBE6D6;
@@ -17,9 +18,40 @@ body {
 }
 
 
-.header h1 {
+/* Фирменный блок */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+
+.logo {
+    font-size: 45px;
+}
+
+
+.brand h1 {
+    margin: 0;
     color: white;
-    margin: 0 0 15px 0;
+    font-size: 32px;
+}
+
+
+.brand p {
+    margin: 5px 0 0;
+    color: white;
+    font-size: 18px;
+}
+
+
+
+/* Меню */
+
+.header nav {
+    margin-top: 10px;
 }
 
 
@@ -146,7 +178,7 @@ a:hover {
     background: white;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 
@@ -163,7 +195,7 @@ a:hover {
 
 
 
-/* Кнопка "Назад" */
+/* Кнопка назад */
 
 .back {
     display: inline-block;
@@ -193,61 +225,30 @@ footer {
 
 
 
-/* Адаптация для телефона */
+/* Адаптивность */
 
 @media (max-width: 600px) {
 
-    body {
-        margin: 0;
-    }
 
     .container {
         width: 95%;
     }
 
+
     .header {
         padding: 20px;
     }
 
+
+    .brand {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
     table {
         font-size: 14px;
     }
-}
 
 
-th a {
-    color: white;
-}
-
-
-th a:hover {
-    color: #EBE6D6;
-}
-
-
-/* Логотип и фирменный блок */
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-
-.logo {
-    font-size: 45px;
-}
-
-
-.brand h1 {
-    margin: 0;
-    color: white;
-    font-size: 32px;
-}
-
-
-.brand p {
-    margin: 5px 0 0;
-    color: white;
-    font-size: 18px;
 }
