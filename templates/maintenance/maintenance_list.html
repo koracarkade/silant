@@ -1,87 +1,98 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Техническое обслуживание</title>
-</head>
-
-<body>
-
-<h1>Техническое обслуживание</h1>
+{% block title %}
+Техническое обслуживание
+{% endblock %}
 
 
-<form method="get">
+{% block content %}
 
-    {{ filter.form.as_p }}
-
-    <button type="submit">
-        Найти
-    </button>
-
-    <a href="{% url 'maintenance:maintenance_list' %}">
-        Сбросить фильтр
-    </a>
-
-</form>
+<h2>
+    Техническое обслуживание
+</h2>
 
 
-<br>
+<div class="filter-box">
+
+    <form method="get">
+
+        {{ filter.form.as_p }}
+
+        <button type="submit">
+            Найти
+        </button>
+
+    </form>
+
+</div>
 
 
-<table border="1" cellpadding="6">
 
-<tr>
-    <th>Машина</th>
-    <th>Тип ТО</th>
-    <th>Дата проведения ТО</th>
-    <th>Описание</th>
-</tr>
+<div class="table-wrapper">
 
+<table>
 
-{% for maintenance in maintenances %}
+    <tr>
 
-<tr>
+        <th>
+            Машина
+        </th>
 
-<td>
-<a href="{% url 'maintenance:maintenance_detail' maintenance.pk %}">
-    {{ maintenance.machine.factory_number }}
-</a>
-</td>
+        <th>
+            Вид ТО
+        </th>
 
+        <th>
+            Дата
+        </th>
 
-<td>
-    {{ maintenance.maintenance_type }}
-</td>
+        <th>
+            Описание
+        </th>
 
-
-<td>
-    {{ maintenance.maintenance_date }}
-</td>
+    </tr>
 
 
-<td>
-    {{ maintenance.description }}
-</td>
+    {% for maintenance in maintenances %}
 
+    <tr>
 
-</tr>
+        <td>
 
+            <a href="{% url 'maintenance:maintenance_detail' maintenance.pk %}">
+                🔍 {{ maintenance.machine.factory_number }}
+            </a>
 
-{% empty %}
+        </td>
 
-<tr>
-<td colspan="4">
-    ТО не найдено
-</td>
-</tr>
+        <td>
+            {{ maintenance.maintenance_type }}
+        </td>
 
-{% endfor %}
+        <td>
+            {{ maintenance.maintenance_date }}
+        </td>
 
+        <td>
+            {{ maintenance.description|truncatechars:50 }}
+        </td>
+
+    </tr>
+
+    {% empty %}
+
+    <tr>
+
+        <td colspan="4">
+            Записей нет.
+        </td>
+
+    </tr>
+
+    {% endfor %}
 
 </table>
 
+</div>
 
-</body>
-
-</html>
+{% endblock %}

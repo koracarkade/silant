@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+        {% block title %}
+        Силант
+        {% endblock %}
+    </title>
+
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <h1>
+        Электронный сервисный паспорт "Силант"
+    </h1>
+
+
+    <nav>
+
+        <a href="/">
+            Машины
+        </a>
+
+        <a href="/maintenance/">
+            ТО
+        </a>
+
+        <a href="/complaints/">
+            Рекламации
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="container">
+
+{% block content %}
+
+{% endblock %}
+
+</main>
+
+
+
+<footer>
+
+    © Силант
+
+</footer>
+
+
+</body>
+
+</html>

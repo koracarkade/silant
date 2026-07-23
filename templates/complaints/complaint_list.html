@@ -1,88 +1,98 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Рекламации</title>
-</head>
-
-<body>
+{% block title %}
+Рекламации
+{% endblock %}
 
 
-<h1>Рекламации</h1>
+{% block content %}
+
+<h2>
+    Рекламации
+</h2>
 
 
-<form method="get">
+<div class="filter-box">
 
-    {{ filter.form.as_p }}
+    <form method="get">
 
-    <button type="submit">
-        Найти
-    </button>
+        {{ filter.form.as_p }}
 
-    <a href="{% url 'complaints:complaint_list' %}">
-        Сбросить фильтр
-    </a>
+        <button type="submit">
+            Найти
+        </button>
 
-</form>
+    </form>
 
-
-<br>
+</div>
 
 
-<table border="1" cellpadding="6">
 
-<tr>
-    <th>Машина</th>
-    <th>Дата рекламации</th>
-    <th>Описание</th>
-    <th>Статус</th>
-</tr>
+<div class="table-wrapper">
 
+<table>
 
-{% for complaint in complaints %}
+    <tr>
 
-<tr>
+        <th>
+            Машина
+        </th>
 
-<td>
-<a href="{% url 'complaints:complaint_detail' complaint.pk %}">
-    {{ complaint.machine.factory_number }}
-</a>
-</td>
+        <th>
+            Дата
+        </th>
 
+        <th>
+            Статус
+        </th>
 
-<td>
-    {{ complaint.complaint_date }}
-</td>
+        <th>
+            Описание
+        </th>
 
-
-<td>
-    {{ complaint.description }}
-</td>
+    </tr>
 
 
-<td>
-    {{ complaint.get_status_display }}
-</td>
+    {% for complaint in complaints %}
 
+    <tr>
 
-</tr>
+        <td>
 
+            <a href="{% url 'complaints:complaint_detail' complaint.pk %}">
+                🔍 {{ complaint.machine.factory_number }}
+            </a>
 
-{% empty %}
+        </td>
 
-<tr>
-<td colspan="4">
-    Рекламации не найдены
-</td>
-</tr>
+        <td>
+            {{ complaint.complaint_date }}
+        </td>
 
-{% endfor %}
+        <td>
+            {{ complaint.get_status_display }}
+        </td>
 
+        <td>
+            {{ complaint.description|truncatechars:50 }}
+        </td>
+
+    </tr>
+
+    {% empty %}
+
+    <tr>
+
+        <td colspan="4">
+            Рекламаций нет.
+        </td>
+
+    </tr>
+
+    {% endfor %}
 
 </table>
 
+</div>
 
-</body>
-
-</html>
+{% endblock %}

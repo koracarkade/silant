@@ -1,36 +1,212 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Машина</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h1>{{ machine.factory_number }}</h1>
 
-<p><b>Модель:</b> {{ machine.machine_model }}</p>
+{% block title %}
+Машина {{ machine.factory_number }}
+{% endblock %}
 
-<p><b>Двигатель:</b> {{ machine.engine_model }}</p>
 
-<p><b>Заводской номер двигателя:</b> {{ machine.engine_number }}</p>
 
-<p><b>Трансмиссия:</b> {{ machine.transmission_model }}</p>
+{% block content %}
 
-<p><b>Ведущий мост:</b> {{ machine.drive_axle_model }}</p>
 
-<p><b>Управляемый мост:</b> {{ machine.steering_axle_model }}</p>
+<div class="card">
 
-<p><b>Комплектация:</b> {{ machine.equipment }}</p>
 
-<p><b>Адрес поставки:</b> {{ machine.delivery_address }}</p>
+<h2>
+    Машина № {{ machine.factory_number }}
+</h2>
 
-<p><b>Грузополучатель:</b> {{ machine.consignee }}</p>
 
-<p><b>Дата отгрузки:</b> {{ machine.shipment_date }}</p>
 
-<a href="{% url 'machines:machine_list' %}">
-    Назад
+<h3>
+    Технические характеристики
+</h3>
+
+
+<p>
+    <b>Модель техники:</b>
+    {{ machine.machine_model }}
+</p>
+
+
+<p>
+    <b>Модель двигателя:</b>
+    {{ machine.engine_model }}
+</p>
+
+
+<p>
+    <b>Заводской номер двигателя:</b>
+    {{ machine.engine_number }}
+</p>
+
+
+<p>
+    <b>Модель трансмиссии:</b>
+    {{ machine.transmission_model }}
+</p>
+
+
+<p>
+    <b>Заводской номер трансмиссии:</b>
+    {{ machine.transmission_number }}
+</p>
+
+
+<p>
+    <b>Модель ведущего моста:</b>
+    {{ machine.drive_axle_model }}
+</p>
+
+
+<p>
+    <b>Заводской номер ведущего моста:</b>
+    {{ machine.drive_axle_number }}
+</p>
+
+
+<p>
+    <b>Модель управляемого моста:</b>
+    {{ machine.steering_axle_model }}
+</p>
+
+
+<p>
+    <b>Заводской номер управляемого моста:</b>
+    {{ machine.steering_axle_number }}
+</p>
+
+
+
+
+<h3>
+    Информация о поставке
+</h3>
+
+
+<p>
+    <b>Дата отгрузки:</b>
+    {{ machine.shipment_date }}
+</p>
+
+
+<p>
+    <b>Грузополучатель:</b>
+    {{ machine.consignee }}
+</p>
+
+
+<p>
+    <b>Адрес поставки:</b>
+    {{ machine.delivery_address }}
+</p>
+
+
+<p>
+    <b>Комплектация:</b>
+    {{ machine.equipment }}
+</p>
+
+
+
+
+<h3>
+    Техническое обслуживание
+</h3>
+
+
+{% for maintenance in machine.maintenances.all %}
+
+
+<div class="section-card">
+
+
+<p>
+    <b>Вид ТО:</b>
+    {{ maintenance.maintenance_type }}
+</p>
+
+
+<p>
+    <b>Дата проведения:</b>
+    {{ maintenance.maintenance_date }}
+</p>
+
+
+<p>
+    <b>Описание:</b>
+    {{ maintenance.description }}
+</p>
+
+
+</div>
+
+
+{% empty %}
+
+
+<p>
+    ТО отсутствует
+</p>
+
+
+{% endfor %}
+
+
+
+
+<h3>
+    Рекламации
+</h3>
+
+
+{% for complaint in machine.complaints.all %}
+
+
+<div class="section-card">
+
+
+<p>
+    <b>Дата рекламации:</b>
+    {{ complaint.complaint_date }}
+</p>
+
+
+<p>
+    <b>Описание:</b>
+    {{ complaint.description }}
+</p>
+
+
+<p>
+    <b>Статус:</b>
+    {{ complaint.get_status_display }}
+</p>
+
+
+</div>
+
+
+{% empty %}
+
+
+<p>
+    Рекламаций нет
+</p>
+
+
+{% endfor %}
+
+
+
+
+<a class="back" href="{% url 'machines:machine_list' %}">
+    ← Назад к списку машин
 </a>
 
-</body>
-</html>
+
+</div>
+
+
+{% endblock %}

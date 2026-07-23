@@ -1,28 +1,31 @@
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-<meta charset="UTF-8">
-<title>ТО машины</title>
-</head>
+{% extends "base.html" %}
 
 
-<body>
+{% block title %}
+Техническое обслуживание
+{% endblock %}
 
 
-<h1>
-    Техническое обслуживание машины {{ maintenance.machine.factory_number }}
-</h1>
+
+{% block content %}
+
+
+<div class="card">
+
+
+<h2>
+    Техническое обслуживание
+</h2>
 
 
 <p>
-    <b>Заводской номер машины:</b>
+    <b>Машина:</b>
     {{ maintenance.machine.factory_number }}
 </p>
 
 
 <p>
-    <b>Тип ТО:</b>
+    <b>Вид ТО:</b>
     {{ maintenance.maintenance_type }}
 </p>
 
@@ -34,28 +37,31 @@
 
 
 <p>
-    <b>Описание работ:</b>
-    {{ maintenance.description }}
-</p>
-
-
-<p>
-    <b>Ответственный:</b>
+    <b>Ответственный сотрудник:</b>
     {{ maintenance.employee }}
 </p>
 
 
+<h3>
+    Выполненные работы
+</h3>
+
+
+<div class="section-card">
+
 <p>
-    <b>Сервисная компания:</b>
-    {{ maintenance.machine.service_company }}
+    {{ maintenance.description }}
 </p>
 
+</div>
 
-<a href="{% url 'maintenance:maintenance_list' %}">
-    Назад к списку ТО
+
+<a class="back" href="{% url 'maintenance:maintenance_list' %}">
+    ← Назад к списку ТО
 </a>
 
 
-</body>
+</div>
 
-</html>
+
+{% endblock %}

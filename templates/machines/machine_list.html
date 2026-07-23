@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Машины</title>
-</head>
 
-<body>
+{% block title %}
+Машины
+{% endblock %}
 
-<h1>Машины</h1>
 
+
+{% block content %}
+
+
+<h2>
+    Машины
+</h2>
+
+
+
+<div class="filter-box">
 
 <form method="get">
 
@@ -21,61 +28,93 @@
 
 </form>
 
-
-<br>
-
-
-<table border="1" cellpadding="6">
-
-    <tr>
-        <th>Заводской номер</th>
-        <th>Модель</th>
-        <th>Двигатель</th>
-        <th>Дата отгрузки</th>
-    </tr>
+</div>
 
 
-    {% for machine in machines %}
 
-    <tr>
+<div class="table-wrapper">
 
-        <td>
-            <a href="{% url 'machines:machine_detail' machine.pk %}">
-                {{ machine.factory_number }}
-            </a>
-        </td>
+<table>
 
 
-        <td>
-            {{ machine.machine_model }}
-        </td>
+<tr>
+    <th>
+        Заводской номер
+    </th>
+
+    <th>
+        Модель
+    </th>
+
+    <th>
+        Двигатель
+    </th>
+
+    <th>
+        Дата отгрузки
+    </th>
+</tr>
 
 
-        <td>
-            {{ machine.engine_model }}
-        </td>
+
+{% for machine in machines %}
 
 
-        <td>
-            {{ machine.shipment_date }}
-        </td>
+<tr>
 
-    </tr>
 
-    {% empty %}
+<td>
 
-    <tr>
-        <td colspan="4">
-            Машины не найдены
-        </td>
-    </tr>
+<a href="{% url 'machines:machine_detail' machine.pk %}">
+{{ machine.factory_number }}
+</a>
 
-    {% endfor %}
+</td>
+
+
+
+<td>
+{{ machine.machine_model }}
+</td>
+
+
+
+<td>
+{{ machine.engine_model }}
+</td>
+
+
+
+<td>
+{{ machine.shipment_date }}
+</td>
+
+
+</tr>
+
+
+
+{% empty %}
+
+
+<tr>
+
+<td colspan="4">
+
+Машины не найдены
+
+</td>
+
+</tr>
+
+
+{% endfor %}
+
 
 
 </table>
 
+</div>
 
-</body>
 
-</html>
+{% endblock %}

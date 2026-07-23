@@ -1,29 +1,26 @@
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Рекламация</title>
-</head>
+{% extends "base.html" %}
 
 
-<body>
+{% block title %}
+Рекламация
+{% endblock %}
 
 
-<h1>
-    Рекламация машины {{ complaint.machine.factory_number }}
-</h1>
+
+{% block content %}
+
+
+<div class="card">
+
+
+<h2>
+    Рекламация
+</h2>
 
 
 <p>
-    <b>Заводской номер машины:</b>
+    <b>Машина:</b>
     {{ complaint.machine.factory_number }}
-</p>
-
-
-<p>
-    <b>Сервисная компания:</b>
-    {{ complaint.machine.service_company }}
 </p>
 
 
@@ -34,22 +31,31 @@
 
 
 <p>
-    <b>Описание проблемы:</b>
-    {{ complaint.description }}
-</p>
-
-
-<p>
     <b>Статус:</b>
     {{ complaint.get_status_display }}
 </p>
 
 
-<a href="{% url 'complaints:complaint_list' %}">
-    Назад к списку рекламаций
+<h3>
+    Описание неисправности
+</h3>
+
+
+<div class="section-card">
+
+<p>
+    {{ complaint.description }}
+</p>
+
+</div>
+
+
+<a class="back" href="{% url 'complaints:complaint_list' %}">
+    ← Назад к списку рекламаций
 </a>
 
 
-</body>
+</div>
 
-</html>
+
+{% endblock %}

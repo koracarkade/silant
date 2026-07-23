@@ -1,0 +1,215 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    background: #EBE6D6;
+    color: #163E6C;
+    margin: 0;
+}
+
+
+/* Шапка */
+
+.header {
+    background: #163E6C;
+    padding: 20px 40px;
+    color: white;
+}
+
+
+.header h1 {
+    color: white;
+    margin: 0 0 15px 0;
+}
+
+
+nav a {
+    color: white;
+    margin-right: 25px;
+    font-size: 18px;
+}
+
+
+nav a:hover {
+    color: #D20A11;
+}
+
+
+
+/* Основной контейнер */
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 30px auto;
+}
+
+
+
+/* Заголовки */
+
+h2 {
+    color: #163E6C;
+}
+
+
+h3 {
+    margin-top: 30px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #D20A11;
+}
+
+
+
+/* Фильтры */
+
+.filter-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+
+
+/* Кнопки */
+
+button {
+    background: #D20A11;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+button:hover {
+    opacity: 0.85;
+}
+
+
+
+/* Таблицы */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+th {
+    background: #163E6C;
+    color: white;
+    padding: 12px;
+}
+
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+tr:hover {
+    background: #f4f4f4;
+}
+
+
+
+/* Ссылки */
+
+a {
+    color: #163E6C;
+    text-decoration: none;
+}
+
+
+a:hover {
+    color: #D20A11;
+}
+
+
+
+/* Карточки */
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Блоки ТО и рекламаций */
+
+.section-card {
+    background: #EBE6D6;
+    padding: 15px;
+    margin-top: 15px;
+    border-left: 5px solid #D20A11;
+    border-radius: 8px;
+}
+
+
+
+/* Кнопка "Назад" */
+
+.back {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 20px;
+    background: #163E6C;
+    color: white;
+    border-radius: 6px;
+}
+
+
+.back:hover {
+    background: #D20A11;
+    color: white;
+}
+
+
+
+/* Подвал */
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #163E6C;
+}
+
+
+
+/* Адаптация для телефона */
+
+@media (max-width: 600px) {
+
+    body {
+        margin: 0;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .header {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
